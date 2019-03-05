@@ -22,7 +22,7 @@ class DataProcessor:
         self.random_state = random_state
         self.X = self.y = None
 
-    def processing(self):
+    def process(self):
         X = []
         y = []
         for i in tqdm(range(0,self.data.shape[0]-self.output_size),desc='parsing data', ncols=0):
@@ -57,13 +57,13 @@ class DataProcessor:
             raise ValueError('did not process the data')
 
         self.shuffle_()
-        train_X = self.X[:self.X.shape[0] * self.split_ratio]
-        train_y = self.y[:self.X.shape[0] * self.split_ratio]
+        X_train = self.X[:self.X.shape[0] * self.split_ratio]
+        y_train = self.y[:self.X.shape[0] * self.split_ratio]
 
-        test_X = self.X[self.X.shape[0] * self.split_ratio:]
-        test_y = self.y[self.X.shape[0] * self.split_ratio:]
+        X_test = self.X[self.X.shape[0] * self.split_ratio:]
+        y_test = self.y[self.X.shape[0] * self.split_ratio:]
 
-        return train_X, train_y, test_X, test_y
+        return X_train, y_train, X_test, y_test
 
     def save(self,path):
         if self.X is None and self.y is None:
