@@ -57,11 +57,11 @@ class DataProcessor:
             raise ValueError('did not process the data')
 
         self.shuffle_()
-        X_train = self.X[:self.X.shape[0] * self.split_ratio]
-        y_train = self.y[:self.X.shape[0] * self.split_ratio]
+        X_train = self.X[int(self.X.shape[0] * self.split_ratio):]
+        y_train = self.y[int(self.X.shape[0] * self.split_ratio):]
 
-        X_test = self.X[self.X.shape[0] * self.split_ratio:]
-        y_test = self.y[self.X.shape[0] * self.split_ratio:]
+        X_test = self.X[:int(self.X.shape[0] * self.split_ratio)]
+        y_test = self.y[:int(self.X.shape[0] * self.split_ratio)]
 
         return X_train, y_train, X_test, y_test
 

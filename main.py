@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # X.shape = [-1,window,number of stocks]
     # y.shape = [-1, predict period, number of stocks]
 
-    model = LstmMax(X.shape[-1], param.lstmhidden, param.dp, param.bi)
+    model = LstmMax(X_train.shape[-1], param.lstmhidden, param.dp, param.bi)
     if gpu:
         model = model.cuda()
 
